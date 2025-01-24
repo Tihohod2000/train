@@ -24,17 +24,20 @@ namespace GrpcStationService {
     static WagonsReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChNQcm90b3Mvd2Fnb25zLnByb3RvIhwKDFdhZ29uUmVxdWVzdBIMCgRkYXRl",
-            "GAEgASgJIjkKBVdhZ29uEgoKAmlkGAEgASgFEgwKBHR5cGUYAiABKAkSFgoO",
-            "ZGVwYXJ0dXJlX2RhdGUYAyABKAkiJwoNV2Fnb25SZXNwb25zZRIWCgZ3YWdv",
-            "bnMYASADKAsyBi5XYWdvbjJACgxXYWdvblNlcnZpY2USMAoPR2V0V2Fnb25z",
-            "QnlEYXRlEg0uV2Fnb25SZXF1ZXN0Gg4uV2Fnb25SZXNwb25zZUIVqgISR3Jw",
-            "Y1N0YXRpb25TZXJ2aWNlYgZwcm90bzM="));
+            "ChNQcm90b3Mvd2Fnb25zLnByb3RvGh9nb29nbGUvcHJvdG9idWYvdGltZXN0",
+            "YW1wLnByb3RvImoKDFdhZ29uUmVxdWVzdBItCglkYXRlU3RhcnQYASABKAsy",
+            "Gi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEisKB2RhdGVFbmQYAiABKAsy",
+            "Gi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wIlAKCVdhZ29uSW5mbxIXCg9p",
+            "bnZlbnRvcnlOdW1iZXIYASABKAkSEwoLYXJyaXZhbFRpbWUYAiABKAkSFQoN",
+            "ZGVwYXJ0dXJlVGltZRgDIAEoCSIrCg1XYWdvblJlc3BvbnNlEhoKBndhZ29u",
+            "cxgBIAMoCzIKLldhZ29uSW5mbzJACgxXYWdvblNlcnZpY2USMAoPR2V0V2Fn",
+            "b25zQnlEYXRlEg0uV2Fnb25SZXF1ZXN0Gg4uV2Fnb25SZXNwb25zZUIVqgIS",
+            "R3JwY1N0YXRpb25TZXJ2aWNlYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { },
+          new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::GrpcStationService.WagonRequest), global::GrpcStationService.WagonRequest.Parser, new[]{ "Date" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::GrpcStationService.Wagon), global::GrpcStationService.Wagon.Parser, new[]{ "Id", "Type", "DepartureDate" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::GrpcStationService.WagonRequest), global::GrpcStationService.WagonRequest.Parser, new[]{ "DateStart", "DateEnd" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::GrpcStationService.WagonInfo), global::GrpcStationService.WagonInfo.Parser, new[]{ "InventoryNumber", "ArrivalTime", "DepartureTime" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::GrpcStationService.WagonResponse), global::GrpcStationService.WagonResponse.Parser, new[]{ "Wagons" }, null, null, null, null)
           }));
     }
@@ -71,7 +74,8 @@ namespace GrpcStationService {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public WagonRequest(WagonRequest other) : this() {
-      date_ = other.date_;
+      dateStart_ = other.dateStart_ != null ? other.dateStart_.Clone() : null;
+      dateEnd_ = other.dateEnd_ != null ? other.dateEnd_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -80,17 +84,31 @@ namespace GrpcStationService {
       return new WagonRequest(this);
     }
 
-    /// <summary>Field number for the "date" field.</summary>
-    public const int DateFieldNumber = 1;
-    private string date_ = "";
+    /// <summary>Field number for the "dateStart" field.</summary>
+    public const int DateStartFieldNumber = 1;
+    private global::Google.Protobuf.WellKnownTypes.Timestamp dateStart_;
     /// <summary>
-    /// Дата в формате YYYY-MM-DD
+    /// Дата начала
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Date {
-      get { return date_; }
+    public global::Google.Protobuf.WellKnownTypes.Timestamp DateStart {
+      get { return dateStart_; }
       set {
-        date_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        dateStart_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "dateEnd" field.</summary>
+    public const int DateEndFieldNumber = 2;
+    private global::Google.Protobuf.WellKnownTypes.Timestamp dateEnd_;
+    /// <summary>
+    /// Дата окончания
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Google.Protobuf.WellKnownTypes.Timestamp DateEnd {
+      get { return dateEnd_; }
+      set {
+        dateEnd_ = value;
       }
     }
 
@@ -107,14 +125,16 @@ namespace GrpcStationService {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Date != other.Date) return false;
+      if (!object.Equals(DateStart, other.DateStart)) return false;
+      if (!object.Equals(DateEnd, other.DateEnd)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Date.Length != 0) hash ^= Date.GetHashCode();
+      if (dateStart_ != null) hash ^= DateStart.GetHashCode();
+      if (dateEnd_ != null) hash ^= DateEnd.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -131,9 +151,13 @@ namespace GrpcStationService {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Date.Length != 0) {
+      if (dateStart_ != null) {
         output.WriteRawTag(10);
-        output.WriteString(Date);
+        output.WriteMessage(DateStart);
+      }
+      if (dateEnd_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(DateEnd);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -144,9 +168,13 @@ namespace GrpcStationService {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Date.Length != 0) {
+      if (dateStart_ != null) {
         output.WriteRawTag(10);
-        output.WriteString(Date);
+        output.WriteMessage(DateStart);
+      }
+      if (dateEnd_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(DateEnd);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -157,8 +185,11 @@ namespace GrpcStationService {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (Date.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Date);
+      if (dateStart_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(DateStart);
+      }
+      if (dateEnd_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(DateEnd);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -171,8 +202,17 @@ namespace GrpcStationService {
       if (other == null) {
         return;
       }
-      if (other.Date.Length != 0) {
-        Date = other.Date;
+      if (other.dateStart_ != null) {
+        if (dateStart_ == null) {
+          DateStart = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+        }
+        DateStart.MergeFrom(other.DateStart);
+      }
+      if (other.dateEnd_ != null) {
+        if (dateEnd_ == null) {
+          DateEnd = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+        }
+        DateEnd.MergeFrom(other.DateEnd);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -189,7 +229,17 @@ namespace GrpcStationService {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            Date = input.ReadString();
+            if (dateStart_ == null) {
+              DateStart = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(DateStart);
+            break;
+          }
+          case 18: {
+            if (dateEnd_ == null) {
+              DateEnd = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(DateEnd);
             break;
           }
         }
@@ -207,7 +257,17 @@ namespace GrpcStationService {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
-            Date = input.ReadString();
+            if (dateStart_ == null) {
+              DateStart = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(DateStart);
+            break;
+          }
+          case 18: {
+            if (dateEnd_ == null) {
+              DateEnd = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(DateEnd);
             break;
           }
         }
@@ -217,15 +277,15 @@ namespace GrpcStationService {
 
   }
 
-  public sealed partial class Wagon : pb::IMessage<Wagon>
+  public sealed partial class WagonInfo : pb::IMessage<WagonInfo>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<Wagon> _parser = new pb::MessageParser<Wagon>(() => new Wagon());
+    private static readonly pb::MessageParser<WagonInfo> _parser = new pb::MessageParser<WagonInfo>(() => new WagonInfo());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<Wagon> Parser { get { return _parser; } }
+    public static pb::MessageParser<WagonInfo> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -238,92 +298,92 @@ namespace GrpcStationService {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Wagon() {
+    public WagonInfo() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Wagon(Wagon other) : this() {
-      id_ = other.id_;
-      type_ = other.type_;
-      departureDate_ = other.departureDate_;
+    public WagonInfo(WagonInfo other) : this() {
+      inventoryNumber_ = other.inventoryNumber_;
+      arrivalTime_ = other.arrivalTime_;
+      departureTime_ = other.departureTime_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Wagon Clone() {
-      return new Wagon(this);
+    public WagonInfo Clone() {
+      return new WagonInfo(this);
     }
 
-    /// <summary>Field number for the "id" field.</summary>
-    public const int IdFieldNumber = 1;
-    private int id_;
+    /// <summary>Field number for the "inventoryNumber" field.</summary>
+    public const int InventoryNumberFieldNumber = 1;
+    private string inventoryNumber_ = "";
     /// <summary>
-    /// Уникальный идентификатор вагона
+    /// Инвентарный номер вагона
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Id {
-      get { return id_; }
+    public string InventoryNumber {
+      get { return inventoryNumber_; }
       set {
-        id_ = value;
+        inventoryNumber_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
-    /// <summary>Field number for the "type" field.</summary>
-    public const int TypeFieldNumber = 2;
-    private string type_ = "";
+    /// <summary>Field number for the "arrivalTime" field.</summary>
+    public const int ArrivalTimeFieldNumber = 2;
+    private string arrivalTime_ = "";
     /// <summary>
-    /// Тип вагона
+    /// Время прибытия
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Type {
-      get { return type_; }
+    public string ArrivalTime {
+      get { return arrivalTime_; }
       set {
-        type_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        arrivalTime_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
-    /// <summary>Field number for the "departure_date" field.</summary>
-    public const int DepartureDateFieldNumber = 3;
-    private string departureDate_ = "";
+    /// <summary>Field number for the "departureTime" field.</summary>
+    public const int DepartureTimeFieldNumber = 3;
+    private string departureTime_ = "";
     /// <summary>
-    /// Дата отправления
+    /// Время отправления
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DepartureDate {
-      get { return departureDate_; }
+    public string DepartureTime {
+      get { return departureTime_; }
       set {
-        departureDate_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        departureTime_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as Wagon);
+      return Equals(other as WagonInfo);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(Wagon other) {
+    public bool Equals(WagonInfo other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Id != other.Id) return false;
-      if (Type != other.Type) return false;
-      if (DepartureDate != other.DepartureDate) return false;
+      if (InventoryNumber != other.InventoryNumber) return false;
+      if (ArrivalTime != other.ArrivalTime) return false;
+      if (DepartureTime != other.DepartureTime) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Id != 0) hash ^= Id.GetHashCode();
-      if (Type.Length != 0) hash ^= Type.GetHashCode();
-      if (DepartureDate.Length != 0) hash ^= DepartureDate.GetHashCode();
+      if (InventoryNumber.Length != 0) hash ^= InventoryNumber.GetHashCode();
+      if (ArrivalTime.Length != 0) hash ^= ArrivalTime.GetHashCode();
+      if (DepartureTime.Length != 0) hash ^= DepartureTime.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -340,17 +400,17 @@ namespace GrpcStationService {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Id != 0) {
-        output.WriteRawTag(8);
-        output.WriteInt32(Id);
+      if (InventoryNumber.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(InventoryNumber);
       }
-      if (Type.Length != 0) {
+      if (ArrivalTime.Length != 0) {
         output.WriteRawTag(18);
-        output.WriteString(Type);
+        output.WriteString(ArrivalTime);
       }
-      if (DepartureDate.Length != 0) {
+      if (DepartureTime.Length != 0) {
         output.WriteRawTag(26);
-        output.WriteString(DepartureDate);
+        output.WriteString(DepartureTime);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -361,17 +421,17 @@ namespace GrpcStationService {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Id != 0) {
-        output.WriteRawTag(8);
-        output.WriteInt32(Id);
+      if (InventoryNumber.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(InventoryNumber);
       }
-      if (Type.Length != 0) {
+      if (ArrivalTime.Length != 0) {
         output.WriteRawTag(18);
-        output.WriteString(Type);
+        output.WriteString(ArrivalTime);
       }
-      if (DepartureDate.Length != 0) {
+      if (DepartureTime.Length != 0) {
         output.WriteRawTag(26);
-        output.WriteString(DepartureDate);
+        output.WriteString(DepartureTime);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -382,14 +442,14 @@ namespace GrpcStationService {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (Id != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Id);
+      if (InventoryNumber.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(InventoryNumber);
       }
-      if (Type.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Type);
+      if (ArrivalTime.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ArrivalTime);
       }
-      if (DepartureDate.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(DepartureDate);
+      if (DepartureTime.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(DepartureTime);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -398,18 +458,18 @@ namespace GrpcStationService {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(Wagon other) {
+    public void MergeFrom(WagonInfo other) {
       if (other == null) {
         return;
       }
-      if (other.Id != 0) {
-        Id = other.Id;
+      if (other.InventoryNumber.Length != 0) {
+        InventoryNumber = other.InventoryNumber;
       }
-      if (other.Type.Length != 0) {
-        Type = other.Type;
+      if (other.ArrivalTime.Length != 0) {
+        ArrivalTime = other.ArrivalTime;
       }
-      if (other.DepartureDate.Length != 0) {
-        DepartureDate = other.DepartureDate;
+      if (other.DepartureTime.Length != 0) {
+        DepartureTime = other.DepartureTime;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -425,16 +485,16 @@ namespace GrpcStationService {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
-            Id = input.ReadInt32();
+          case 10: {
+            InventoryNumber = input.ReadString();
             break;
           }
           case 18: {
-            Type = input.ReadString();
+            ArrivalTime = input.ReadString();
             break;
           }
           case 26: {
-            DepartureDate = input.ReadString();
+            DepartureTime = input.ReadString();
             break;
           }
         }
@@ -451,16 +511,16 @@ namespace GrpcStationService {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
-            Id = input.ReadInt32();
+          case 10: {
+            InventoryNumber = input.ReadString();
             break;
           }
           case 18: {
-            Type = input.ReadString();
+            ArrivalTime = input.ReadString();
             break;
           }
           case 26: {
-            DepartureDate = input.ReadString();
+            DepartureTime = input.ReadString();
             break;
           }
         }
@@ -510,14 +570,14 @@ namespace GrpcStationService {
 
     /// <summary>Field number for the "wagons" field.</summary>
     public const int WagonsFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::GrpcStationService.Wagon> _repeated_wagons_codec
-        = pb::FieldCodec.ForMessage(10, global::GrpcStationService.Wagon.Parser);
-    private readonly pbc::RepeatedField<global::GrpcStationService.Wagon> wagons_ = new pbc::RepeatedField<global::GrpcStationService.Wagon>();
+    private static readonly pb::FieldCodec<global::GrpcStationService.WagonInfo> _repeated_wagons_codec
+        = pb::FieldCodec.ForMessage(10, global::GrpcStationService.WagonInfo.Parser);
+    private readonly pbc::RepeatedField<global::GrpcStationService.WagonInfo> wagons_ = new pbc::RepeatedField<global::GrpcStationService.WagonInfo>();
     /// <summary>
     /// Список вагонов
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::GrpcStationService.Wagon> Wagons {
+    public pbc::RepeatedField<global::GrpcStationService.WagonInfo> Wagons {
       get { return wagons_; }
     }
 

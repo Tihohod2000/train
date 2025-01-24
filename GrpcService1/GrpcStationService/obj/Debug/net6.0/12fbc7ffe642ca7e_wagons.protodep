@@ -1,2 +1,3 @@
 obj\Debug\net6.0\Protos/Wagons.cs \
-obj\Debug\net6.0\Protos/WagonsGrpc.cs: Protos/wagons.proto
+obj\Debug\net6.0\Protos/WagonsGrpc.cs: C:/Users/Tihohod/.nuget/packages/grpc.tools/2.40.0/build/native/include/google/protobuf/timestamp.proto\
+ Protos/wagons.proto

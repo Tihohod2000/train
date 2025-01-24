@@ -16,6 +16,7 @@
 
     <ItemGroup>
         <PackageReference Include="Grpc.AspNetCore" Version="2.40.0"/>
+        <PackageReference Include="QtSharp" Version="0.0.2" />
     </ItemGroup>
 
 </Project>

@@ -1,40 +1,65 @@
 using ClientGrpcService2.Services;
-
-using Grpc.Net.Client;
-using GrpcStationService;  // Это пространство имен из сгенерированного кода
+using Grpc.Core;
+using GrpcStationService;
+using Google.Protobuf.WellKnownTypes; // Для работы с Timestamp
 using System;
 using System.Threading.Tasks;
+using Grpc.Net.Client;
 
 class Program
 {
     static async Task Main(string[] args)
     {
         // Создаём канал для общения с сервером
-        var channel = GrpcChannel.ForAddress("https://localhost:5001");  // Адрес вашего сервера
+        var channel = GrpcChannel.ForAddress("http://localhost:5033");  // Адрес вашего сервера
         var client = new WagonService.WagonServiceClient(channel);
 
-        // Запрос даты у пользователя
-        Console.Write("Введите дату (YYYY-MM-DD): ");
-        string date = Console.ReadLine();
+        Console.WriteLine("Введите дату начала (YYYY-MM-DD): ");
+        var dateStart = Console.ReadLine();
+        Console.WriteLine("Введите дату окончания (YYYY-MM-DD): ");
+        var dateEnd = Console.ReadLine();
 
         try
         {
-            // Создаём запрос
-            var request = new WagonRequest { Date = date };
+            // Преобразуем строки в DateTime (с учетом времени по UTC)
+            var startDate = DateTime.Parse(dateStart).ToUniversalTime();
+            var endDate = DateTime.Parse(dateEnd).ToUniversalTime();
 
-            // Отправляем запрос на сервер и получаем ответ
-            var response = await client.GetWagonsByDateAsync(request);
+            // Выводим для проверки
+            Console.WriteLine($"Start Date (UTC): {startDate}");
+            Console.WriteLine($"End Date (UTC): {endDate}");
 
-            // Выводим полученные данные
-            Console.WriteLine("Полученные вагоны:");
+            // Преобразуем DateTime в Timestamp
+            var startTimestamp = Timestamp.FromDateTime(startDate);
+            var endTimestamp = Timestamp.FromDateTime(endDate);
+
+            // Теперь создаем объект запроса с Timestamp значениями
+            var wagonRequest = new WagonRequest
+            {
+                DateStart = startTimestamp,  // передаем Timestamp
+                DateEnd = endTimestamp       // передаем Timestamp
+            };
+
+            // Отправка запроса на сервер
+            var response = await client.GetWagonsByDateAsync(wagonRequest);
+
+            // Выводим результат
+            Console.WriteLine("Список вагонов:");
             foreach (var wagon in response.Wagons)
             {
-                Console.WriteLine($"Id: {wagon.Id}, Type: {wagon.Type}, Departure Date: {wagon.DepartureDate}");
+                Console.WriteLine($"Инвентарный номер: {wagon.InventoryNumber}");
+                Console.WriteLine($"Время прибытия: {wagon.ArrivalTime}");
+                Console.WriteLine($"Время отправления: {wagon.DepartureTime}");
+                Console.WriteLine();
             }
         }
-        catch (Exception ex)
+        catch (RpcException e)
         {
-            Console.WriteLine($"Ошибка: {ex.Message}");
+            Console.WriteLine($"Ошибка: {e.Status.Detail}");
+        }
+        finally
+        {
+            await channel.ShutdownAsync();
         }
 
         Console.ReadKey();

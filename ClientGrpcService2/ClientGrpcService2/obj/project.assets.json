@@ -298,6 +298,22 @@
           }
         }
       },
+      "QtSharp/0.0.2": {
+        "type": "package",
+        "compile": {
+          "lib/net45/QtCoreSharp.dll": {},
+          "lib/net45/QtGuiSharp.dll": {},
+          "lib/net45/QtWidgetsSharp.dll": {}
+        },
+        "runtime": {
+          "lib/net45/QtCoreSharp.dll": {},
+          "lib/net45/QtGuiSharp.dll": {},
+          "lib/net45/QtWidgetsSharp.dll": {}
+        },
+        "build": {
+          "build/net45/QtSharp.targets": {}
+        }
+      },
       "System.Memory/4.5.3": {
         "type": "package",
         "compile": {
@@ -688,6 +704,24 @@
         "microsoft.extensions.primitives.nuspec"
       ]
     },
+    "QtSharp/0.0.2": {
+      "sha512": "BDIXYvChtDpTRgW9pE/GlMRrQF/4+xSJeKZhr3eyAXbid/1XKuHZQrUXGS33uQm9LBRuEB4tEvew/OrTdETUVA==",
+      "type": "package",
+      "path": "qtsharp/0.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/net45/QtCoreSharp.dll.config",
+        "build/net45/QtGuiSharp.dll.config",
+        "build/net45/QtSharp.targets",
+        "build/net45/QtWidgetsSharp.dll.config",
+        "lib/net45/QtCoreSharp.dll",
+        "lib/net45/QtGuiSharp.dll",
+        "lib/net45/QtWidgetsSharp.dll",
+        "qtsharp.0.0.2.nupkg.sha512",
+        "qtsharp.nuspec"
+      ]
+    },
     "System.Memory/4.5.3": {
       "sha512": "3oDzvc/zzetpTKWMShs1AADwZjQ/36HnsufHRPcOjyRAAMLDlu2iD33MBI2opxnezcVUtXyqDXXjoFMOU9c7SA==",
       "type": "package",
@@ -712,7 +746,8 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "Grpc.AspNetCore >= 2.40.0"
+      "Grpc.AspNetCore >= 2.40.0",
+      "QtSharp >= 0.0.2"
     ]
   },
   "packageFolders": {
@@ -757,6 +792,10 @@
           "Grpc.AspNetCore": {
             "target": "Package",
             "version": "[2.40.0, )"
+          },
+          "QtSharp": {
+            "target": "Package",
+            "version": "[0.0.2, )"
           }
         },
         "imports": [
@@ -781,5 +820,17 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.428\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'QtSharp 0.0.2' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "QtSharp",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
 }

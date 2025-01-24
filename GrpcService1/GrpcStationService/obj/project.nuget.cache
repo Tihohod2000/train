@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "pqBz1BjOl0l2ec4dK4+FKWHMqa4JEW6tRt5zeJ3cg34+usl7CBaTE2qGLMGTA02fWHLAeyolfFWvi3mBfJLSNw==",
+  "dgSpecHash": "/LkL1Z2Tpc4rNQ1kPZB/+h4OPVYl4LXaGavyrccDvyJMQbWuOtu/x5AOldIeZGETzuWM/4RR63dYUVhlFmCOBw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Tihohod\\Desktop\\Работа\\train\\GrpcService1\\GrpcStationService\\GrpcStationService.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Tihohod\\.nuget\\packages\\google.protobuf\\3.18.0\\google.protobuf.3.18.0.nupkg.sha512",
+    "C:\\Users\\Tihohod\\.nuget\\packages\\google.protobuf\\3.29.3\\google.protobuf.3.29.3.nupkg.sha512",
     "C:\\Users\\Tihohod\\.nuget\\packages\\grpc.aspnetcore\\2.40.0\\grpc.aspnetcore.2.40.0.nupkg.sha512",
     "C:\\Users\\Tihohod\\.nuget\\packages\\grpc.aspnetcore.server\\2.40.0\\grpc.aspnetcore.server.2.40.0.nupkg.sha512",
     "C:\\Users\\Tihohod\\.nuget\\packages\\grpc.aspnetcore.server.clientfactory\\2.40.0\\grpc.aspnetcore.server.clientfactory.2.40.0.nupkg.sha512",
