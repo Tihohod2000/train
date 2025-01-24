@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcStationService";
+
+service WagonService {
+  rpc GetWagonsByDate (WagonRequest) returns (WagonResponse);
+}
+
+message WagonRequest {
+  string date = 1; // Дата в формате YYYY-MM-DD
+}
+
+message Wagon {
+  int32 id = 1;          // Уникальный идентификатор вагона
+  string type = 2;       // Тип вагона
+  string departure_date = 3; // Дата отправления
+}
+
+message WagonResponse {
+  repeated Wagon wagons = 1; // Список вагонов
+}
