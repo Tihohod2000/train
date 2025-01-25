@@ -6,7 +6,8 @@
 
 Для корректной работы: 
 1. укажите правильное подключение gRPC service к БД в файле: ```train/GrpcService1/GrpcStationService/appsetting.json```
- Измените настройки подключения на свои тут:```"ConnectionStrings": {
+ Измените настройки подключения на свои тут:
+```"ConnectionStrings": {
     "DefaultConnection": "Host=localhost;Port=5432;Username=postgres;Password=12345;Database=Wagoons"
   }```  
-2. Соберите проект
+3. Соберите проект
