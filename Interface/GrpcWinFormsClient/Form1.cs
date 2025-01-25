@@ -70,14 +70,22 @@ namespace GrpcWinFormsClient
 
                         return new object[]
                         {
-            wagon.InventoryNumber,
-            arrivalTimeStr,
-            departureTimeStr
+                            wagon.InventoryNumber,
+                            arrivalTimeStr,
+                            departureTimeStr
                         };
                     }).ToArray();
 
                     // Добавляем строки в DataGridView
-                    dataGridView.Rows.AddRange(rows.Select(row => new DataGridViewRow { Cells = { new DataGridViewTextBoxCell { Value = row[0] }, new DataGridViewTextBoxCell { Value = row[1] }, new DataGridViewTextBoxCell { Value = row[2] } } }).ToArray());
+                    dataGridView.Rows.AddRange(rows.Select(row => new DataGridViewRow 
+                    {
+                        Cells =
+                        {
+                            new DataGridViewTextBoxCell { Value = row[0] },
+                            new DataGridViewTextBoxCell { Value = row[1] },
+                            new DataGridViewTextBoxCell { Value = row[2] }
+                        }
+                    }).ToArray());
                 });
             }
             catch (RpcException ex)
