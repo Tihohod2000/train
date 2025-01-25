@@ -21,9 +21,12 @@ C:\Users\Tihohod\Desktop\Работа\train\ClientGrpcService2\ClientGrpcService
 C:\Users\Tihohod\Desktop\Работа\train\ClientGrpcService2\ClientGrpcService2\obj\Debug\net6.0\staticwebassets.build.json
 C:\Users\Tihohod\Desktop\Работа\train\ClientGrpcService2\ClientGrpcService2\obj\Debug\net6.0\staticwebassets.development.json
 C:\Users\Tihohod\Desktop\Работа\train\ClientGrpcService2\ClientGrpcService2\obj\Debug\net6.0\scopedcss\bundle\ClientGrpcService2.styles.css
-C:\Users\Tihohod\Desktop\Работа\train\ClientGrpcService2\ClientGrpcService2\obj\Debug\net6.0\ClientGrpcService2.csproj.CopyComplete
 C:\Users\Tihohod\Desktop\Работа\train\ClientGrpcService2\ClientGrpcService2\obj\Debug\net6.0\ClientGrpcService2.dll
 C:\Users\Tihohod\Desktop\Работа\train\ClientGrpcService2\ClientGrpcService2\obj\Debug\net6.0\refint\ClientGrpcService2.dll
 C:\Users\Tihohod\Desktop\Работа\train\ClientGrpcService2\ClientGrpcService2\obj\Debug\net6.0\ClientGrpcService2.pdb
 C:\Users\Tihohod\Desktop\Работа\train\ClientGrpcService2\ClientGrpcService2\obj\Debug\net6.0\ClientGrpcService2.genruntimeconfig.cache
 C:\Users\Tihohod\Desktop\Работа\train\ClientGrpcService2\ClientGrpcService2\obj\Debug\net6.0\ref\ClientGrpcService2.dll
+C:\Users\Tihohod\Desktop\Работа\train\ClientGrpcService2\ClientGrpcService2\bin\Debug\net6.0\QtCoreSharp.dll
+C:\Users\Tihohod\Desktop\Работа\train\ClientGrpcService2\ClientGrpcService2\bin\Debug\net6.0\QtGuiSharp.dll
+C:\Users\Tihohod\Desktop\Работа\train\ClientGrpcService2\ClientGrpcService2\bin\Debug\net6.0\QtWidgetsSharp.dll
+C:\Users\Tihohod\Desktop\Работа\train\ClientGrpcService2\ClientGrpcService2\obj\Debug\net6.0\ClientGrpcService2.csproj.CopyComplete

@@ -8,7 +8,8 @@
     ".NETCoreApp,Version=v6.0": {
       "ClientGrpcService2/1.0.0": {
         "dependencies": {
-          "Grpc.AspNetCore": "2.40.0"
+          "Grpc.AspNetCore": "2.40.0",
+          "QtSharp": "0.0.2"
         },
         "runtime": {
           "ClientGrpcService2.dll": {}
@@ -143,6 +144,22 @@
         }
       },
       "Microsoft.Extensions.Primitives/3.0.3": {},
+      "QtSharp/0.0.2": {
+        "runtime": {
+          "lib/net45/QtCoreSharp.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          },
+          "lib/net45/QtGuiSharp.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          },
+          "lib/net45/QtWidgetsSharp.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
       "System.Memory/4.5.3": {}
     }
   },
@@ -284,6 +301,13 @@
       "sha512": "sha512-eJuAFVIH9zUZ7j7tCSbJD+tS0dueENIerwoGxFL8RYqCmbEqQ7wVOG+mt2mZAbEpnMPsGl1Fc/HIhWpB9ftwhg==",
       "path": "microsoft.extensions.primitives/3.0.3",
       "hashPath": "microsoft.extensions.primitives.3.0.3.nupkg.sha512"
+    },
+    "QtSharp/0.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-BDIXYvChtDpTRgW9pE/GlMRrQF/4+xSJeKZhr3eyAXbid/1XKuHZQrUXGS33uQm9LBRuEB4tEvew/OrTdETUVA==",
+      "path": "qtsharp/0.0.2",
+      "hashPath": "qtsharp.0.0.2.nupkg.sha512"
     },
     "System.Memory/4.5.3": {
       "type": "package",
