@@ -12,3 +12,24 @@ ClientGrpcService2/ClientGrpcService2/.vs/ClientGrpcService2/FileContentIndex/14
 /Interface/GrpcWinFormsClient/obj
 /Interface/.vs
 /Interface/GrpcWinFormsClient/.vs
+# Папки и файлы системы сборки
+bin/
+obj/
+# Системные файлы
+.DS_Store
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+# Автоматически сгенерированные файлы
+*.g.cs
+*.g.i.cs
+*.designer.cs
+# Пользовательские настройки
+*.DotSettings.user
+*.vs/
+.vsconfig
+# Конфигурация и отладка
+*.db
+*.cache
+*.pdb
+*.mdb
