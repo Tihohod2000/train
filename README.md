@@ -5,7 +5,7 @@
 3. gRPC client UI
 
 Для корректной работы: 
-1. укажите правильное подключение gRPC service к БД в файле: ```train/GrpcService1/GrpcStationService/appsetting.json```
+1. Укажите правильное подключение gRPC service к БД в файле: ```train/GrpcService1/GrpcStationService/appsetting.json```
  Измените настройки подключения на свои тут:
 ```
 "ConnectionStrings": {
