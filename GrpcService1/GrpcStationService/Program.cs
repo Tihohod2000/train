@@ -23,6 +23,7 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
+app.Urls.Add("http://localhost:5000");
 // Подключение CORS и gRPC-Web
 app.UseCors();
 app.UseGrpcWeb();

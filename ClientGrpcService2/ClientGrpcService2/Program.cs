@@ -11,7 +11,7 @@ class Program
     static async Task Main(string[] args)
     {
         // Создаём канал для общения с сервером
-        var channel = GrpcChannel.ForAddress("http://localhost:5033");  // Адрес вашего сервера
+        var channel = GrpcChannel.ForAddress("http://localhost:5000");  // Адрес вашего сервера
         var client = new WagonService.WagonServiceClient(channel);
 
         Console.WriteLine("Введите дату начала (YYYY-MM-DD): ");

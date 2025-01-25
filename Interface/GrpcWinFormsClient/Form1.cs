@@ -25,7 +25,7 @@ namespace GrpcWinFormsClient
             try
             {
                 // Создаём канал и клиента
-                var channel = new Channel("localhost:5033", ChannelCredentials.Insecure);
+                var channel = new Channel("localhost:5000", ChannelCredentials.Insecure);
                 var client = new WagonService.WagonServiceClient(channel);
 
                 string dateStart = txtStartDate.Text;
