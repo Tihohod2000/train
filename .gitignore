@@ -9,4 +9,6 @@ ClientGrpcService2/ClientGrpcService2/.vs/ClientGrpcService2/FileContentIndex/14
 .vs/slnx.sqlite
 /.vs
 /ClientGrpcService2/ClientGrpcService2/obj
-/Interface
+/Interface/GrpcWinFormsClient/obj
+/Interface/.vs
+/Interface/GrpcWinFormsClient/.vs

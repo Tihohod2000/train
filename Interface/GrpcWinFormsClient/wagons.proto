@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcStationService";
+
+import "google/protobuf/timestamp.proto"; // Импортируем для работы с временными метками
+
+service WagonService {
+  rpc GetWagonsByDate (WagonRequest) returns (WagonResponse);
+}
+
+message WagonRequest {
+  google.protobuf.Timestamp dateStart = 1; // Дата начала
+  google.protobuf.Timestamp dateEnd = 2;   // Дата окончания
+}
+
+message WagonInfo {
+  string inventoryNumber = 1;   // Инвентарный номер вагона
+  string arrivalTime = 2;       // Время прибытия
+  string departureTime = 3;     // Время отправления
+}
+
+message WagonResponse {
+  repeated WagonInfo wagons = 1; // Список вагонов
+}
