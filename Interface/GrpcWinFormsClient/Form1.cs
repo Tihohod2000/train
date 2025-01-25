@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Windows.Forms;
-using Grpc.Net.Client;
 using GrpcStationService;
 using Google.Protobuf.WellKnownTypes; // Для работы с Timestamp
 using System.Threading.Tasks;
 using Grpc.Core;
-using System.Runtime.InteropServices.ComTypes;
+using System.Linq;
 
 namespace GrpcWinFormsClient
 {
@@ -14,26 +13,19 @@ namespace GrpcWinFormsClient
         public Form1()
         {
             InitializeComponent();
+
+            // Добавление столбцов в DataGridView
+            /*dataGridView.Columns.Add("inventoryNumber", "Инвентарный номер");
+            dataGridView.Columns.Add("arrivalTime", "Время прибытия");
+            dataGridView.Columns.Add("departureTime", "Время отправления");*/
         }
 
         private async void btnFetchData_Click_1(object sender, EventArgs e)
         {
-            // Получаем введенные данные
-            
-
-            /* // Проверяем корректность дат
-             if (!DateTime.TryParse(dateStart, out DateTime startDate) ||
-                 !DateTime.TryParse(dateEnd, out DateTime endDate))
-             {
-                 MessageBox.Show("Пожалуйста, введите корректные даты в формате YYYY-MM-DD.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                 return;
-             }*/
-
-            // Преобразуем DateTime в Timestamp
             try
             {
                 // Создаём канал и клиента
-                using var channel = GrpcChannel.ForAddress("http://localhost:5033");
+                var channel = new Channel("localhost:5033", ChannelCredentials.Insecure);
                 var client = new WagonService.WagonServiceClient(channel);
 
                 string dateStart = txtStartDate.Text;
@@ -56,24 +48,43 @@ namespace GrpcWinFormsClient
                 // Отправляем запрос
                 var response = await client.GetWagonsByDateAsync(wagonRequest).ConfigureAwait(false);
 
-                Console.WriteLine("Ответ: " + response);
-
-                // Обрабатываем ответ
-                txtResponse.Clear();
-                foreach (var wagon in response.Wagons)
+                this.Invoke((MethodInvoker)delegate
                 {
-                    txtResponse.AppendText($"Инвентарный номер: {wagon.InventoryNumber}\n");
-                    txtResponse.AppendText($"Время прибытия: {wagon.ArrivalTime}\n");
-                    txtResponse.AppendText($"Время отправления: {wagon.DepartureTime}\n");
-                    txtResponse.AppendText("\n");
-                }
+                    dataGridView.Rows.Clear(); // Очищаем таблицу перед добавлением новых данных
+
+                    // Преобразуем данные в массив строк для DataGridView
+                    var rows = response.Wagons.Select(wagon =>
+                    {
+                        // Преобразуем строки в DateTime
+                        DateTime.TryParse(wagon.ArrivalTime, out var arrivalDateTime);
+                        DateTime.TryParse(wagon.DepartureTime, out var departureDateTime);
+
+                        // Если время невалидное, задаем минимальные значения
+                        var arrivalTimeStr = arrivalDateTime != DateTime.MinValue
+                            ? arrivalDateTime.ToString("yyyy-MM-dd HH:mm:ss")
+                            : "Invalid Time";
+
+                        var departureTimeStr = departureDateTime != DateTime.MinValue
+                            ? departureDateTime.ToString("yyyy-MM-dd HH:mm:ss")
+                            : "Invalid Time";
+
+                        return new object[]
+                        {
+            wagon.InventoryNumber,
+            arrivalTimeStr,
+            departureTimeStr
+                        };
+                    }).ToArray();
+
+                    // Добавляем строки в DataGridView
+                    dataGridView.Rows.AddRange(rows.Select(row => new DataGridViewRow { Cells = { new DataGridViewTextBoxCell { Value = row[0] }, new DataGridViewTextBoxCell { Value = row[1] }, new DataGridViewTextBoxCell { Value = row[2] } } }).ToArray());
+                });
             }
             catch (RpcException ex)
             {
                 MessageBox.Show($"Ошибка: {ex.Status.Detail}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
 
     }
 }

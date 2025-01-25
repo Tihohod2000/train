@@ -8,12 +8,27 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<WagonsDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Добавление gRPC
+
+// Добавление gRPC и CORS
 builder.Services.AddGrpc();
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.WithOrigins("http://localhost") // Укажите URL клиента
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
 
 var app = builder.Build();
 
-app.MapGrpcService<WagonService>(); // Регистрация сервиса
-app.MapGet("/", () => "Use a gRPC client to communicate with this server.");
+// Подключение CORS и gRPC-Web
+app.UseCors();
+app.UseGrpcWeb();
 
+// Настройка маршрутов gRPC
+app.MapGrpcService<WagonService>().EnableGrpcWeb();
+
+app.MapGet("/", () => "Сервер работает. Используйте gRPC клиент.");
 app.Run();
