@@ -40,7 +40,6 @@ project.fragment.lock.json
 # Автоматически сгенерированные файлы
 *.g.cs
 *.g.i.cs
-*.designer.cs
 # Временные файлы
 *.bak
 *.swp
