@@ -40,6 +40,8 @@ project.fragment.lock.json
 # Автоматически сгенерированные файлы
 *.g.cs
 *.g.i.cs
+# Исключение для Form1.Designer.cs
+!Form1.Designer.cs
 # Временные файлы
 *.bak
 *.swp
