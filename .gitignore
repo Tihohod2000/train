@@ -1,15 +1,5 @@
 
-/ClientGrpcService2/ClientGrpcService2/obj/Debug
-/GrpcService1/GrpcStationService/obj
-/ClientGrpcService2/.vs/ClientGrpcService2/v17
-/ClientGrpcService2/.vs
-/ClientGrpcService2/ClientGrpcService2/.vs/ClientGrpcService2/v17
-ClientGrpcService2/ClientGrpcService2/.vs/ClientGrpcService2/FileContentIndex/1439f282-4522-47f0-96f5-978818143bdf.vsidx
-/ClientGrpcService2/ClientGrpcService2/.vs
-.vs/slnx.sqlite
-/.vs
-/Interface/.vs
-/Interface/GrpcWinFormsClient/.vs
+
 # NuGet пакеты
 *.nupkg
 *.snupkg
@@ -37,9 +27,6 @@ project.fragment.lock.json
 *.DotSettings.user
 .vs/
 .vsconfig
-# Автоматически сгенерированные файлы
-*.g.cs
-*.g.i.cs
 # Временные файлы
 *.bak
 *.swp
@@ -51,6 +38,3 @@ project.fragment.lock.json
 Thumbs.db
 desktop.ini
 $RECYCLE.BIN/
-
-# Исключение для Form1.Designer.cs
-!**/Form1.Designer.cs
