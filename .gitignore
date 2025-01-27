@@ -53,4 +53,4 @@ desktop.ini
 $RECYCLE.BIN/
 
 # Исключение для Form1.Designer.cs
-!Form1.Designer.cs
+!**/Form1.Designer.cs
